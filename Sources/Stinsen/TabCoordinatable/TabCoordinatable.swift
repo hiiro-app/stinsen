@@ -23,6 +23,17 @@ public protocol TabCoordinatable: Coordinatable {
     func customize(_ view: AnyView) -> CustomizeViewType
 
     /**
+     Implement this function if you wish to customize tab bar item.
+
+     - Parameter view: The input view.
+     - Parameter offset: item offset.
+
+     - Returns: The modified view.
+     */
+
+    func customizeTabItem(_ view: AnyView, offset: Int) -> AnyView
+
+    /**
      Searches the tabbar for the first route that matches the route and makes it the active tab.
 
      - Parameter route: The route that will be focused.
@@ -93,12 +104,17 @@ public extension TabCoordinatable {
         return view
     }
 
+    func customizeTabItem(_ view: AnyView, offset: Int) -> AnyView {
+        return view
+    }
+
     func view() -> AnyView {
         AnyView(
             TabCoordinatableView(
                 paths: self.child.startingItems,
                 coordinator: self,
-                customize: customize
+                customize: customize,
+                customizeTabItem: customizeTabItem
             )
         )
     }
