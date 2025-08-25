@@ -28,7 +28,7 @@ public class NavigationStack<T: NavigationCoordinatable> {
     let initialInput: Any?
     var root: NavigationRoot!
     
-    @Published var value: [NavigationStackItem]
+    @Published public var value: [NavigationStackItem]
     
     public init(initial: PartialKeyPath<T>, _ initialInput: Any? = nil) {
         self.value = []
