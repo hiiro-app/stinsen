@@ -28,7 +28,11 @@ public class NavigationStack<T: NavigationCoordinatable> {
     let initialInput: Any?
     var root: NavigationRoot!
     
-    @Published public var value: [NavigationStackItem]
+    @Published var value: [NavigationStackItem]
+
+    public var count() -> Int {
+        value.count
+    }
     
     public init(initial: PartialKeyPath<T>, _ initialInput: Any? = nil) {
         self.value = []
