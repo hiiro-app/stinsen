@@ -30,7 +30,7 @@ public class NavigationStack<T: NavigationCoordinatable> {
     
     @Published var value: [NavigationStackItem]
 
-    public var count() -> Int {
+    public var count: Int {
         value.count
     }
     
